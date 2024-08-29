@@ -8,8 +8,8 @@ namespace CommentAndReviewSystem1.Services
         public Review GetById(int id);
         public Review Add(Review review);
         public void Delete(int id);
-    
-       
+
+        public bool Save();
         public Review Update(Review reviewchanges);
 
     }

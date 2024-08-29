@@ -1,0 +1,42 @@
+﻿@model Post
+
+@{
+    if (@TempData["message"] is not null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["message"]
+        </div>
+    }
+
+}
+<div class="container mt-4">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h4 class="card-title">@Model.Title</h4>
+            <!-- Category Tag -->
+            <span class="badge bg-primary">@Enum.GetName(typeof(Category), @Model.Category)</span>
+            <!-- Post Content -->
+            <h5 class="card-title">@Model.Content</h5>
+
+
+
+            <div class="mt-3">
+                <!-- Details Button -->
+                <a asp-action="Details" asp-controller="Post" asp-route-id="@Model.PostId" class="btn btn-info me-2">
+                    Details
+                </a>
+
+                <!-- Edit Button -->
+                <a asp-action="Edit" asp-controller="Post" asp-route-id="@Model.PostId" class="btn btn-warning me-2">
+                    Edit
+                </a>
+
+                <!-- Add Review Button -->
+                <a asp-action="AddReview" asp-controller="Review" asp-route-postId="@Model.PostId">
+                    <button type="button" class="btn btn-secondary">
+                    Add Review
+                </button>
+                </a>
+            </div>
+        </div>
+    </div>

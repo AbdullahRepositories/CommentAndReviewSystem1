@@ -50,7 +50,13 @@ namespace CommentAndReviewSystem1.Services
         {
             return _context.Posts.Where(c => c.Status == true);
         }
-
+        public Post Update(Post postChanges)
+        {
+            var post = _context.Posts.Attach(postChanges);
+            post.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+            return postChanges;
+        }
 
         public bool Save()
         {

@@ -12,6 +12,8 @@ namespace CommentAndReviewSystem1.Services
         public void Delete(int id);
         public Post Add(Post post);
         public bool Save();
-        
+        public Post Update(Post postChanges);
+
+
     }
 }

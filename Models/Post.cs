@@ -10,7 +10,8 @@ namespace CommentAndReviewSystem1.Models
         }
 
         public int PostId { get; set; }
-        
+        [Required]
+        public string Title { get; set; }
         public Guid? UserId { get; set; }= Guid.Empty;
 
         [Display(Name = "Content Category")]

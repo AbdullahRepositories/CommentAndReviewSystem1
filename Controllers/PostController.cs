@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CommentAndReviewSystem1.Services;
 using CommentAndReviewSystem1.Models;
+using System;
 
 namespace CommentAndReviewSystem1.Controllers
 {
@@ -48,7 +49,8 @@ namespace CommentAndReviewSystem1.Controllers
                 if (ModelState.IsValid)
                 {
                     Post newPost = new()
-                    {
+                    { 
+                        Title= model.Title,
                         Content = model.Content,
                         Category = model.Category.Value,
                         AddingDate = DateTime.Now,
@@ -59,6 +61,52 @@ namespace CommentAndReviewSystem1.Controllers
                 _postRepository.Save();
                 }
                 return View();
+            
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Post post = _postRepository.GetById(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+                
+            
+
+            return View(post);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Post model)
+        {
+            //throw new Exception(" in edit exiption");
+            if (ModelState.IsValid)
+            {
+                Post post = _postRepository.GetById(model.PostId);
+                post.Title = model.Title;
+                post.Content = model.Content;
+                post.Category = model.Category.Value;
+                
+
+                _postRepository.Update(post);
+                _postRepository.Save();
+                TempData["message"] = "Edited Successfully:)";
+                return RedirectToAction("Index","home");
+
+            }
+            return View();
+        }
+
+        public IActionResult Details(int postId)
+        {
+            var post = _postRepository.GetById(postId);
+
+                //ViewBag.SuccessMessage = TempData["SuccessMessage"];
+
+                
+                return View(post);
             
         }
     }
