@@ -30,5 +30,5 @@ Clone this repository to your local machine using the following command:
 ### 3.  Add these command in the package manager
 ```bash
 add-migration "whatever_name"
-```bash
+
 updata-database
