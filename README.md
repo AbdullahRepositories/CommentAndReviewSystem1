@@ -23,6 +23,12 @@ Before you can run this application, ensure that you have the following installe
 ### 1. Clone the Repository
 
 Clone this repository to your local machine using the following command:
+
+### 2.  Define the connection string in appsettings.json:
+
+
+### 3.  Add these command in the package manager
 ```bash
-Add new migration  - add-migration "whatever_name"
-Update the database - updata-database
+add-migration "whatever_name"
+
+updata-database
