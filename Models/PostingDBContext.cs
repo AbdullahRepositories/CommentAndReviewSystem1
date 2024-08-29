@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace CommentAndReviewSystem1.Models
 {
 
-    public partial class PostingDBContext : DbContext
+    public partial class PostingDBContext : IdentityDbContext<IdentityUser>
     {
         public PostingDBContext()
         {

@@ -49,7 +49,7 @@ namespace CommentAndReviewSystem1.Controllers
 
             if (ModelState.IsValid)
             {
-                Review _review = new()
+                Review review = new()
                 {
                     Description = model.Description,
                     Rating = model.Rating,
@@ -59,7 +59,7 @@ namespace CommentAndReviewSystem1.Controllers
 
                 };
 
-                _reviewRepository.Add(_review);
+                _reviewRepository.Add(review);
                 _reviewRepository.Save();
                 TempData["message"] = "Review added successfully!";
                 return RedirectToAction("Details", "Post", new { postId = model.PostId });

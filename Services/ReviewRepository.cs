@@ -14,7 +14,7 @@ namespace CommentAndReviewSystem1.Services
         public Review Add(Review review)
         {
             _context.Add(review);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return review;
         }
 

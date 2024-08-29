@@ -15,6 +15,13 @@
     }
  
 }
+<style>
+.meta{
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+}
+</style>
 <div class="container mt-4">
     <h2 class="mb-4">@ViewData["Title"]</h2>
 
@@ -23,6 +30,26 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h4 class="card-title">@post.Title</h4>
+                <P class="meta">
+                        @{
+                            double fraction = @post.AverageRating.Value % 1;
+                            for (int i = 1; i <= @post.AverageRating; i++)
+                            {
+
+                                <i class="fa fa-star" style="color:red;"></i>
+                            }
+                            if (fraction > 0.0)
+                            {
+                                <i class="fa fa-star-half-empty" style="color:red;"></i>
+
+                            }
+                        for (int i = 5; i > (int)Math.Ceiling(@post.AverageRating.Value) && i > 0; i--)
+                            {
+                                <i class="fa fa-star-o" style="color:red;"></i>
+                            }
+
+                        }
+                    </P>
                 <!-- Category Tag -->
                 <span class="badge bg-primary">@Enum.GetName(typeof(Category), @post.Category)</span>
                 <!-- Post Content -->
@@ -41,10 +68,10 @@
                         Edit
                     </a>
 
-                    <!-- Add Review Button -->
-                    <button type="button" asp-action="AddReview" asp-controller="Review" asp-route-PostId="@post.PostId" class="btn btn-secondary" data-bs-toggle="modal">
-                        Add Review
-                    </button>
+                    <!-- Add Review Button 
+                    // <button type="button" asp-action="AddReview" asp-controller="Review" asp-route-PostId="@post.PostId" class="btn btn-secondary" data-bs-toggle="modal">
+                    //     Add Review
+                    // </button>-->
                 </div>
             </div>
         </div>
