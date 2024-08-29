@@ -25,4 +25,4 @@ Before you can run this application, ensure that you have the following installe
 Clone this repository to your local machine using the following command:
 ```bash
 Add new migration  - add-migration "whatever_name"
-Update the database - "updata-database"
+Update the database - updata-database
