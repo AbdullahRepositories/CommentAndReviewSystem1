@@ -18,7 +18,7 @@ namespace CommentAndReviewSystem1.Services
                 throw new ArgumentNullException(nameof(post));
             }
             _context.Posts.Add(post);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return post;
         }
 
@@ -52,7 +52,10 @@ namespace CommentAndReviewSystem1.Services
         }
 
 
-
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
         //public IEnumerable<Post> GetPostsByCategory(int Category)
         //{
         //    return throw;

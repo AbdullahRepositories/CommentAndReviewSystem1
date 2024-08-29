@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CommentAndReviewSystem1.Services;
+using CommentAndReviewSystem1.Models;
 
 namespace CommentAndReviewSystem1.Controllers
 {
@@ -11,9 +12,9 @@ namespace CommentAndReviewSystem1.Controllers
         private readonly IPostRepository _postRepository;
 
 
-        public PostController()
+        public PostController(IPostRepository postRepository)
         {
-
+            _postRepository = postRepository;
         }
 
 
@@ -38,67 +39,27 @@ namespace CommentAndReviewSystem1.Controllers
         }
 
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public IActionResult AddPost( model)
-        //{
-        //    string uniqeFileName = ProcessUploadFile(model, x => x.Picture);
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult AddPost(Post model)
+        {
 
-        //    //string uniqeFileName = ProcessUploadFile(model);
-        //    //ViewBag.Categories = _context.Categories;
-        //    //ViewBag.Languages = _context.Languages;
-
-        //    string idToSave = null;
-        //    bool _status = true;
-        //    bool _claim = true;
-
-        //    if (User.IsInRole("Student") || User.IsInRole("Admin"))
-        //    {
-        //        idToSave = model.AddedByUserId;
-
-        //    }
-        //    else if (User.IsInRole("Instructor"))
-        //    {
-        //        idToSave = model.InstructorId;
-        //        model.Status = _status;
-        //        model.Claimed = _claim;
-
-        //    }
-        //    if (ModelState.IsValid && idToSave != null)
-        //    {
-        //        Course newCourse = new()
-        //        {
-        //            Title = model.Title,
-        //            AddedByUserId = model.AddedByUserId,
-        //            CategoryId = model.CategoryId,
-        //            AddingDate = model.AddingDate,
-        //            AverageRating = model.AverageRating,
-        //            LastUpdate = model.LastUpdate,
-        //            InstructorFullName = model.InstructorFullName,
-        //            CourseDuration = model.CourseDuration,
-        //            CourseDescription = model.CourseDescription,
-        //            LanguageId = model.LanguageId,
-        //            Level = model.Level,
-        //            PriceStatus = model.PriceStatus,
-        //            SubcategoryId = model.SubcategoryId,
-        //            TopicsCovered = model.TopicsCovered,
-        //            Link = model.Link,
-        //            VedioLength = model.VedioLength,
-        //            Picture = uniqeFileName,
-        //            Status = model.Status,
-        //            Platform = model.Platform,
-        //            InstructorId = model.InstructorId,
-        //            Claimed = model.Claimed,
-
-        //        };
-        //        _courseRepository.Add(newCourse);
-        //        _courseRepository.Save();
-
-        //        TempData["Success"] = "Course added successfully!";
-        //        return RedirectToAction("index", "instructor");
-        //    }
-        //    var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-        //    return RedirectToAction("addcourse", "instructor");
-        //}
+            
+                if (ModelState.IsValid)
+                {
+                    Post newPost = new()
+                    {
+                        Content = model.Content,
+                        Category = model.Category.Value,
+                        AddingDate = DateTime.Now,
+                        Status    = model.Status,
+                        UserId= model.UserId,
+                    };
+                    _postRepository.Add(newPost);
+                _postRepository.Save();
+                }
+                return View();
+            
+        }
     }
 }

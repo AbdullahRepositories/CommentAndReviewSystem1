@@ -1,4 +1,5 @@
 ﻿using CommentAndReviewSystem1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CommentAndReviewSystem1.Services
 {
@@ -10,5 +11,7 @@ namespace CommentAndReviewSystem1.Services
         public Post GetById(int id);
         public void Delete(int id);
         public Post Add(Post post);
+        public bool Save();
+        
     }
 }

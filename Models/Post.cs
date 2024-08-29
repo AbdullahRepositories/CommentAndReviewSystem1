@@ -5,14 +5,16 @@ namespace CommentAndReviewSystem1.Models
 {
     public partial class Post
     {
-        public Post() { }
+        public Post() { 
+        Reviews= new HashSet<Review>();
+        }
 
         public int PostId { get; set; }
         
-        public Guid? UserId { get; set; }
+        public Guid? UserId { get; set; }= Guid.Empty;
 
         [Display(Name = "Content Category")]
-        public Category? Category { get; set; }
+        public int? Category { get; set; }
         public DateTime AddingDate { get; set; } = DateTime.Now;
 
         
@@ -22,7 +24,7 @@ namespace CommentAndReviewSystem1.Models
 
         [Required]
         public string Content { get; set; }
-        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+        public virtual ICollection<Review> Reviews { get; set; }
 
 
 
