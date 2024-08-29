@@ -25,9 +25,7 @@ Before you can run this application, ensure that you have the following installe
 Clone this repository to your local machine using the following command:
 
 ### 2.  Define the connection string in appsettings.json:
-"ConnectionStrings": {
-  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;MultipleActiveResultSets=true"
-}
+
 
 ### 3.  Add these command in the package manager
 ```bash
