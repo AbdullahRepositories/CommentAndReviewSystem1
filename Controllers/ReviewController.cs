@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using CommentAndReviewSystem1.Services;
 using CommentAndReviewSystem1.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CommentAndReviewSystem1.Controllers
 {
+    //[Authorize]
     public class ReviewController : Controller
     {
         private readonly IReviewRepository _reviewRepository;

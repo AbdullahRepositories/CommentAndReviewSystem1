@@ -4,9 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using CommentAndReviewSystem1.Services;
 using CommentAndReviewSystem1.Models;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CommentAndReviewSystem1.Controllers
 {
+
+    //[Authorize]
     public class PostController : Controller
     {
 
