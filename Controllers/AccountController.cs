@@ -4,7 +4,7 @@ namespace CommentAndReviewSystem1.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult  ()
+        public IActionResult Index()
         {
             return View();
         }

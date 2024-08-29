@@ -1,0 +1,35 @@
+﻿@model Post
+@* @inject IEmployeeRepository _empRepository *@
+@{
+    ViewData["Title"] = "Create Post";
+}
+
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="AddPost" method="post">
+    <!-- Hidden field for UserId -->
+    <input type="hidden" asp-for="UserId" />
+
+    <!-- Content input field -->
+    <div class="mb-3">
+        <label asp-for="Content" class="form-label"></label>
+        <textarea asp-for="Content" class="form-control" rows="5" required></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <!-- Category selection field -->
+    <div class="mb-3">
+        <label asp-for="Category" class="form-label"></label>
+        <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-select" required>
+            <option value="">--Please Select--</option>
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <!-- Validation summary -->
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <!-- Submit button -->
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+
