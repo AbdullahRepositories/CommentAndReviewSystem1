@@ -16,7 +16,7 @@
  
 }
 <style>
-.meta{
+    .container .meta {
     font-size: 14px;
     color: gray;
     margin-bottom: 10px;
@@ -30,7 +30,9 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h4 class="card-title">@post.Title</h4>
-                <P class="meta">
+                <P class="meta" style="font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;"> @post.AverageRating
                         @{
                             double fraction = @post.AverageRating.Value % 1;
                             for (int i = 1; i <= @post.AverageRating; i++)
@@ -40,12 +42,12 @@
                             }
                             if (fraction > 0.0)
                             {
-                                <i class="fa fa-star-half-empty" style="color:red;"></i>
+                            <i class="fas fa-star-half-alt" style="color:red;"></i>
 
                             }
                         for (int i = 5; i > (int)Math.Ceiling(@post.AverageRating.Value) && i > 0; i--)
                             {
-                                <i class="fa fa-star-o" style="color:red;"></i>
+                            <i class="far fa-star" style="color:red;"></i>
                             }
 
                         }
