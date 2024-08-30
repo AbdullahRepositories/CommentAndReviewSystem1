@@ -3,6 +3,7 @@
 ## Description
 This is a web application built using ASP.NET Core MVC that allows users to post comments and reviews on various items (e.g., products, articles, etc.). The application supports user authentication, creating, reading, updating, and deleting comments and reviews, and displays user ratings.
 
+
 ## Features
 - User authentication and authorization.
 - Post, edit, and delete comments.
