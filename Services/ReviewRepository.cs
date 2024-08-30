@@ -35,6 +35,10 @@ namespace CommentAndReviewSystem1.Services
         {
             return _context.Reviews.FirstOrDefault(R => R.ReviewId == id);
         }
+        public IEnumerable<Review> GetByPost(int id)
+        {
+            return _context.Reviews.Where(R => R.PostId == id);
+        }
 
         public Review Update(Review reviewchanges)
         {

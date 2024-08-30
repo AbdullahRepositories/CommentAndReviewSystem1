@@ -5,20 +5,23 @@ using CommentAndReviewSystem1.Services;
 using CommentAndReviewSystem1.Models;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using CommentAndReviewSystem1.ViewModels;
 
 namespace CommentAndReviewSystem1.Controllers
 {
 
-    //[Authorize]
+    [Authorize]
     public class PostController : Controller
     {
 
         private readonly IPostRepository _postRepository;
+        private readonly IReviewRepository _reviewRepository;
 
 
-        public PostController(IPostRepository postRepository)
+        public PostController(IPostRepository postRepository, IReviewRepository reviewRepository)
         {
             _postRepository = postRepository;
+            _reviewRepository = reviewRepository;
         }
 
 
@@ -105,11 +108,15 @@ namespace CommentAndReviewSystem1.Controllers
         public IActionResult Details(int postId)
         {
             var post = _postRepository.GetById(postId);
-
-                //ViewBag.SuccessMessage = TempData["SuccessMessage"];
-
+            var postReviews=_reviewRepository.GetByPost(postId);
+            //ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            PostWithReviewsViewModel postWithReviews = new()
+            {
+                post = post,
+                reviews=postReviews
+            };
                 
-                return View(post);
+                return View(postWithReviews);
             
         }
     }

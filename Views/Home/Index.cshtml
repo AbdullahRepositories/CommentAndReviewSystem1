@@ -65,15 +65,15 @@
                         Details
                     </a>
 
-                    <!-- Edit Button -->
-                    <a asp-action="Edit" asp-controller="Post" asp-route-id="@post.PostId" class="btn btn-warning me-2">
-                        Edit
-                    </a>
-
-                    <!-- Add Review Button 
-                    // <button type="button" asp-action="AddReview" asp-controller="Review" asp-route-PostId="@post.PostId" class="btn btn-secondary" data-bs-toggle="modal">
-                    //     Add Review
-                    // </button>-->
+                    <!-- Edit Button 
+                    // <a asp-action="Edit" asp-controller="Post" asp-route-id="@post.PostId" class="btn btn-warning me-2">
+                    //     Edit
+                    // </a>
+                    -->
+                     Add Review Button 
+                     <button type="button" asp-action="AddReview" asp-controller="Review" asp-route-PostId="@post.PostId" class="btn btn-secondary" data-bs-toggle="modal">
+                         Add Review
+                    </button>
                 </div>
             </div>
         </div>

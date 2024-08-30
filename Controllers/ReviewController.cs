@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CommentAndReviewSystem1.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ReviewController : Controller
     {
         private readonly IReviewRepository _reviewRepository;
